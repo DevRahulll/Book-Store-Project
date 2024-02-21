@@ -14,8 +14,8 @@ export const Home = () => {
         setLoading(true);
         axios
             .get('http://localhost:9000/books')
-            .then((res) => {
-                setBooks(res.data.data);
+            .then((response) => {
+                setBooks(response.data);
                 setLoading(false);
             })
             .catch((error) => {
@@ -47,12 +47,12 @@ export const Home = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {books.map((book, index) => {
+                        {books.map((book, index) => (
                             <tr key={book._id} className='h-8'>
                                 <td className='border border-slate-700 rounded-md text-center'>
                                     {index + 1}
                                 </td>
-                                
+
                                 <td className='border border-slate-700 rounded-md text-center'>
                                     {book.title}
                                 </td>
@@ -82,8 +82,7 @@ export const Home = () => {
                                     </div>
                                 </td>
                             </tr>
-
-                        })}
+                        ))}
                     </tbody>
                 </table>
             )}
