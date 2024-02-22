@@ -72,11 +72,11 @@ export const Home = () => {
                                         </Link>
 
                                         <Link to={`/books/edit/${book._id}`}>
-                                            <BsInfoCircle className='text-2xl text-yellow-600' />
+                                            <AiOutlineEdit className='text-2xl text-yellow-600' />
                                         </Link>
 
                                         <Link to={`/books/delete/${book._id}`}>
-                                            <BsInfoCircle className='text-2xl text-red-800' />
+                                            <MdOutlineDelete className='text-2xl text-red-800' />
                                         </Link>
 
                                     </div>
