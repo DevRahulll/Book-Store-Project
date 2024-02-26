@@ -5,25 +5,27 @@ import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 export const EditBook = () => {
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const [publishYear, setPublishYear] = useState('');
+  const [title, setTitle] = useState('')
+  const [author, setAuthor] = useState('')
+  const [publishYear, setPublishYear] = useState('')
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { id } = useParams;
+  const { id } = useParams();
+
 
   useEffect(() => {
     setLoading(true);
     axios
       .get(`http://localhost:9000/books/${id}`)
       .then((response) => {
-        setTitle(response.data.title)
         setAuthor(response.data.author)
+        setTitle(response.data.title)
         setPublishYear(response.data.publishYear)
+        // console.log(response.data);
         setLoading(false)
       }).catch((error) => {
         setLoading(false)
-        alert("An error occured while in useffect . Please check Console")
+        alert("An error occured while in useffect . PPlease check Console")
         console.log(error);
       })
   }, [])
@@ -36,7 +38,7 @@ export const EditBook = () => {
     };
     setLoading(true);
     axios
-      .put(`http://localhost:9000/books/${id}`, data)
+      .put(`http://localhost:9000/books/${id}`,data)
       .then(() => {
         setLoading(false)
         navigate('/')
